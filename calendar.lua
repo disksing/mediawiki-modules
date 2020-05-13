@@ -4,7 +4,7 @@
 -- {{#Invoke:Calendar|lunar_to_solar|2020-04-01}} => 2020-04-23
 -- {{#Invoke:Calendar|lunar_to_solar|2020-04-01L}} => 2020-05-23
 -- {{#Invoke:Calendar|lunar_format|2020-04-01}} => 二零二零年四月初一
--- {{#Invoke:Calendar|lunar_format|2020-04-01Lleap}} => 二零二零年闰四月初一
+-- {{#Invoke:Calendar|lunar_format|2020-04-01L}} => 二零二零年闰四月初一
 
 local bit32 = require( 'bit32' )
 
