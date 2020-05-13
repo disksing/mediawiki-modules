@@ -312,33 +312,40 @@ end
 
 return {
     solar_dn = function(frame)
+    	if frame.args[1] == "" then return "" end
         local y, m, d = frame.args[1]:match("(%d+)%-(%d+)%-(%d+)")
-        return solar_dn(tonumber(y), tonumber(m), tonumber(d))
+        return tostring(solar_dn(tonumber(y), tonumber(m), tonumber(d)))
     end,
     solar_ymd = function(frame)
+    	if frame.args[1] == "" then return "" end
         local y, m, d = solar_ymd(tonumber(frame.args[1]))
         return string.format("%d-%02d-%02d", y, m, d)
     end,
     lunar_dn = function(frame)
+    	if frame.args[1] == "" then return "" end
         local y, m, d = frame.args[1]:match("(%d+)%-(%d+)%-(%d+)")
-        return lunar_dn(tonumber(y), tonumber(m), tonumber(d), frame.args[1]:match("%d+%-%d+%-%d+L") ~= nil)
+        return tostring(lunar_dn(tonumber(y), tonumber(m), tonumber(d), frame.args[1]:match("%d+%-%d+%-%d+L") ~= nil))
     end,
     lunar_ymd = function(frame)
+    	if frame.args[1] == "" then return "" end
         local y, m, d, leap = lunar_ymd(tonumber(frame.args[1]))
         return string.format("%d-%02d-%02d%s", y, m, d, leap and "L" or "")
     end,
     solar_to_lunar = function(frame)
+    	if frame.args[1] == "" then return "" end
         local sy, sm, sd = frame.args[1]:match("(%d+)%-(%d+)%-(%d+)")
         local y, m, d, leap = solar_to_lunar(tonumber(sy), tonumber(sm), tonumber(sd))
         return string.format("%d-%02d-%02d%s", y, m, d, leap and "L" or "")
     end,
     lunar_to_solar = function(frame)
+    	if frame.args[1] == "" then return "" end
         local ly, lm, ld= frame.args[1]:match("(%d+)%-(%d+)%-(%d+)")
         local ll = frame.args[1]:match("%d+%-%d+%-%d+L") ~= nil
         local y, m, d = lunar_to_solar(tonumber(ly), tonumber(lm), tonumber(ld), ll)
         return string.format("%d-%02d-%02d", y, m, d)
     end,
     lunar_format = function(frame)
+    	if frame.args[1] == "" then return "" end
         local y, m, d= frame.args[1]:match("(%d+)%-(%d+)%-(%d+)")
         local l = frame.args[1]:match("%d+%-%d+%-%d+L") ~= nil
         return lunar_format(tonumber(y), tonumber(m), tonumber(d), l)
